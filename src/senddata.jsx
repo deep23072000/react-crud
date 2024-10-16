@@ -37,6 +37,7 @@ const Senddata = ()=>{
            <input type="text" name="email" value={userdata.email} onChange={handleinput} placeholder="Enter email addres" /><br></br>
            <button onClick={sub}> submit </button>
            </form>
+
         </>
     )
 }
