@@ -10,13 +10,22 @@ const Data = ()=> {
       "name":"",
       "email":""
     })
-    let [upid,setUpid] = useState(null)
+    let [upid,setUpid] = useState(null);
+    let [searchdata,setSearchdata] = useState('');
+
+    console.log(searchdata)
+
+
 
     
     useEffect(()=>{
         axios.get('http://localhost:4000/info').then((e)=>{setJsondata(e.data)});
-    },[jsondata])
+    },[])
 
+    const search = ()=>{
+      let filterdata = jsondata.filter((e)=> e.name === searchdata);
+      console.log(filterdata);
+    }
     
     const del = (arg)=>{
       axios.delete(`http://localhost:4000/info/${arg}`).then(()=>{alert("data deleted")})
@@ -62,6 +71,9 @@ const Data = ()=> {
     
      return(
         <>
+
+        <input type="text" value={searchdata} onChange={(e)=>{setSearchdata(e.target.value)}} />
+        <button onClick={search}>search</button>
         
           {
             jsondata.map((items)=>(
