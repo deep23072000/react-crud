@@ -1,12 +1,17 @@
-import Data from "./Data.jsx";
-import Seconddata from "./secondData.jsx";
-import Senddata from "./senddata.jsx";
+import Tabledata from "./Table.jsx";
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import Updateform from "./updateform.jsx";
 const App = ()=>{
   return(
     <>
-      <Data></Data>
-      <Seconddata></Seconddata>
-      <Senddata/>
+        <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Tabledata></Tabledata>}></Route>
+              <Route path="/updateform" element={<Updateform></Updateform>}></Route>
+              <Route path="/updateform/:id" element={<Updateform></Updateform>}></Route>
+              
+            </Routes>
+        </BrowserRouter>
     </>
   )
 }
